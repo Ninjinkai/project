@@ -1,0 +1,26 @@
+.grayscale {
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+}
+
+.invert {
+    -webkit-filter: invert(100%);
+            filter: invert(100%);
+}
+
+.myNostalgia {
+	-webkit-filter: saturate(40%) grayscale(100%) contrast(45%) sepia(100%);
+            filter: saturate(40%) grayscale(100%) contrast(45%) sepia(100%);
+}
+
+.wideInput {
+	width: 100%;
+}
+
+p {
+	padding-left: 10px;
+}
+
+.w400 {
+	width: 400px;
+}
