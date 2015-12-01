@@ -24,7 +24,7 @@
       if ($result->num_rows == 0)
       {
         $error = "<span class='error'>Username/Password
-                  invalid</span><br><br>";
+                  invalid</span><br>";
       }
       else
       {
@@ -33,7 +33,7 @@
 // Clear forms and present link to main app page.
         echo "<script>$(\"#primaryForm\").remove();</script>";
         die("You are now signed in. Please <a href='wall.php'>" .
-            "click here</a> to continue.<br><br>");
+            "click here</a> to continue.<br>");
       }
     }
   }
@@ -47,7 +47,7 @@
       <div class='main'><h3>Please enter your details to sign in</h3>
         <input class="wideInput" type='text' maxlength='16' name='user' value='$user' placeholder='Username' required autofocus><br>
         <input class="wideInput" type='password' maxlength='16' name='pass' value='$pass' placeholder='Password' required><br>
-        $error<br>
+        $error
         <input class="btn btn-lg btn-primary btn-block" type='submit' value='Sign in'>
       </div>
     </form>
