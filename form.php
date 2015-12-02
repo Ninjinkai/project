@@ -42,19 +42,29 @@ echo "<title>$appname</title>\n";
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation bar. -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
 <?php
-                echo "<p class=\"navbar-text\">$user"
-?>
-                    <a class="btn btn-lg btn-primary navbar-btn" href="logout.php" role="button">Sign out</a>
-                    <a class="btn btn-lg btn-primary navbar-btn" href="wall.php" role="button">View wall</a>
-                </p>
+echo <<<_END
+<!-- Navigation bar. -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <p class="navbar-brand">$appname</p>
             </div>
-        </div>
+            <ul class="nav nav-pills">
+                <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">$user
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="wall.php">View wall</a></li>
+                        <li><a href="logout.php">Sign out</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Account</a></li>
+                    </ul>
+                </li>
+            </ul>
     </nav>
+_END;
+?>
     <!-- Photo upload form. -->
 	<div class="container">    
 		<div class="row">
