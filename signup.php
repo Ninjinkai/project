@@ -78,7 +78,7 @@ echo <<<_END
     </script>
     <form class='form-signin' method='post' action='signup.php'>
       <div class='main'><h3>Please enter your details to sign up</h3>
-        <input class="wideInput" type='text' maxlength='16' name='user' value='$user' placeholder='Username' required autofocus onBlur='checkUser(this)'>
+        <input class="wideInput" type='text' maxlength='16' name='user' value='$user' placeholder='Username' required autofocus onkeyup='checkUser(this)'>
         <br>
         <input class="wideInput" type='password' maxlength='16' name='pass' value='$pass' placeholder='Password' required>
         <br>
