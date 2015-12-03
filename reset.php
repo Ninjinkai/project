@@ -18,7 +18,40 @@
     if(!$loggedin)
     {
         header('Location: index.php');
-    exit();
+        exit();
+    }
+
+// Check that old password is correct, then insert new password into table.
+$error = "No password change has been submitted.";
+    if (isset($_POST['oldPassword']) && isset($_POST['newPassword']))
+    {
+        $oldPassword = $newPassword = "";
+
+        $oldPassword = sanitizeString($db, $_POST['oldPassword']);
+        $newPassword = sanitizeString($db, $_POST['newPassword']);
+
+        if ($oldPassword == "" || $newPassword == "") $error = "Not all fields were entered.";
+        else 
+        {
+            $salt1 = "2Qs0r@";
+            $salt2 = "J0n@$";
+            $oldtoken = hash('ripemd128', "$salt1$oldPassword$salt2");
+            $newtoken = hash('ripemd128', "$salt1$newPassword$salt2");
+            $result = queryMysql("SELECT password FROM USERS WHERE userid='$user' AND password='$oldtoken'");
+            if ($result->num_rows == 0)
+            {
+               $error = "Incorrect password.";
+            } 
+            else
+            {
+                queryMysql("UPDATE USERS SET password='$newtoken' WHERE userid='$user'");
+                $error = "Your password has been updated.";
+            }
+        }
+
+    // Prevent duplicate submissions on page refresh.
+        // header("Location: reset.php");
+        // exit();
     }
 ?>
 <!DOCTYPE html>
@@ -56,6 +89,7 @@ echo <<<_END
                     <ul class="dropdown-menu">
                         <li><a href="wall.php">View wall</a></li>
                         <li><a href="form.php">Post pic</a></li>
+                        <li><a href="account.php">Account</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="logout.php">Sign out</a></li>
                     </ul>
@@ -63,42 +97,7 @@ echo <<<_END
             </ul>
     </nav>
 
-<div class="container">    
-        <div class="row">
-            <div id="formParent" class="col-md-6 col-md-offset-3">
-                <form id="form" class="form-horizontal" method="POST" action="reset.php">
-                    <div class="form-group">
-                        <label for="oldPassword" class="control-label col-xs-6">Old password</label>
-                        <div class="col-xs-6">
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="oldPassword" name="oldPassword" 
-                            maxlength="16" size="16" required placeholder="16 characters" autofocus>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="newPassword" class="control-label col-xs-6">New password</label>
-                        <div class="col-xs-6">
-                            <div class="input-group">
-                                <input type="password" class="form-control" id="newPassword" name="newPassword" 
-                            maxlength="16" size="16" required placeholder="16 characters">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <input type="submit" value="Reset Password" class="btn btn-lg btn-primary">
-                    </div>
-                </form>
-                <hr>
-                <form id="form" class="form-horizontal" method="POST" action="delete.php">
-                    <div class="text-center">
-                        <h4>Permanently delete your account from $appname.<br>Your posts will not be deleted.</h4>
-                        <input type="submit" value="Delete account" class="btn btn-lg btn-danger">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <div class='main container'>$error</div>
 _END;
 
 $db->close();
