@@ -56,9 +56,9 @@ echo <<<_END
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="wall.php">View wall</a></li>
-                        <li><a href="logout.php">Sign out</a></li>
+                        <li><a href="account.php">Account</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Account</a></li>
+                        <li><a href="logout.php">Sign out</a></li>
                     </ul>
                 </li>
             </ul>
