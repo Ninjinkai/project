@@ -66,7 +66,7 @@ _END;
         queryMysql("INSERT INTO USERS VALUES('$user', '$token')");
 // Clear forms and present sign in link.
         echo "<script>$(\"#primaryForm\").remove();</script>";
-        die("<h4>Account created</h4>Please <a href='index.php'>sign in.</a><br>");
+        die("<h4>Account created</h4>Please <a href='signin.php'>sign in.</a><br>");
       }
     }
   }

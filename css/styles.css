@@ -25,3 +25,23 @@ p {
 .w400 {
 	width: 400px;
 }
+
+.navbar .container-fluid>.navbar-header {
+  float: left;
+  margin-right: 10px;
+}
+.navbar .navbar-nav {
+  float: left;
+  margin: 5px;
+}
+.nav>li {
+  float: left;
+}
+
+.nav > li > a {
+   font-size: 21px;
+}
+
+.navbar-brand {
+	font-size: 21px;
+}
