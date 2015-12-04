@@ -71,7 +71,7 @@ _END;
 			<div id="formParent" class="col-md-6 col-md-offset-3">
 				<form id="form" class="form-horizontal" method="POST" action="wall.php" enctype="multipart/form-data">
                     <!-- Input for poster's name.  Default with user name, but can be edited, up to 16 characters. -->
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="name" class="control-label col-xs-1">Name</label>
                         <div class="col-xs-11">
                             <div class="input-group">
@@ -80,7 +80,7 @@ _END;
                             maxlength="16" size="16" value="<?php echo $user ?>" required>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Input for post title.  The database allows 140 characters, but we limit to 20 here. -->
                     <div class="form-group">
                         <label for="title" class="control-label col-xs-1">Title</label>
@@ -100,13 +100,13 @@ _END;
                         </div>
                     </div>
                     <!-- Shows a placeholder image, then the uploaded image with filters applied. -->
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <label class="sr-only" for="image">Original Image</label>
                         <img id="image" name="image" alt="picture.png" src="icons/picture.png">
                         <input type="file" id="upload" name="upload" accept="image/*" required>
                     </div>
                     <!-- Filter selection. When one is clicked, the preview image is updated. -->
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <h3>Filter Photo</h3>
                         <div class="checkbox-inline">
                             <label for="myNostalgia">My Nostalgia</label>
@@ -121,13 +121,15 @@ _END;
                             <input type="radio" name="filter" id="invert" value="invert" onclick="applyInvertFilter();">
                         </div>
                         <div class="checkbox-inline">
-                            <label for="original">Revert to Original</label>
-                            <input type="radio" name="filter" id="lomo" value="lomo" onclick="revertToOriginal();">
+                            <label for="original">No Filter</label>
+                            <input type="radio" name="filter" id="lomo" value="lomo" onclick="revertToOriginal();" checked>
                         </div>
                     </div>
                     <!-- Form submission and reset buttons. Reset reloads the page. -->
-                    <input type="submit" value="Upload image" class="btn btn-lg btn-primary col-md-offset-1">
-                    <input type="button" id="resetForm" value="Reset form" class="btn btn-lg btn-default" onclick="location.reload(true);">
+                    <div class="text-center">
+                        <input type="submit" value="Upload image" class="btn btn-lg btn-primary">
+                        <input type="button" id="resetForm" value="Reset form" class="btn btn-lg btn-default" onclick="location.reload(true);">
+                    </div>
 				</form>
 			</div>
 		</div>

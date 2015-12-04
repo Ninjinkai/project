@@ -22,10 +22,10 @@
     }
 
 // Handle form post.
-    if(isset($_POST['name']) && isset($_POST['title']) && isset($_POST['text']))
+    if(isset($_POST['title']) && isset($_POST['text']))
     {
         // Sanitze inputs.
-        $name = sanitizeString($db, $_POST['name']);
+        // $name = sanitizeString($db, $_POST['name']);
         $title = sanitizeString($db, $_POST['title']);
         $text = sanitizeString($db, $_POST['text']);
 
@@ -46,13 +46,13 @@
         // Get image file, upload to 'users' folder.
         if ($_FILES)
         {
-            $tmp_name = $_FILES['upload']['name'];
+            $tmp_name = $_FILES['upload'][$user];
             $dstFolder = 'users';
             move_uploaded_file($_FILES['upload']['tmp_name'], $dstFolder . DIRECTORY_SEPARATOR . $file_name);
         }
 
         // Input post data to table.
-        SavePostToDB($db, $name, $title, $text, $time, $file_name, $filter);
+        SavePostToDB($db, $user, $title, $text, $time, $file_name, $filter);
 
         // Prevent duplicate submissions on page refresh.
         header("Location: wall.php");
