@@ -18,6 +18,13 @@
     $userstr  = " ($user)";
   }
   else $loggedin = FALSE;
+
+// If the user is logged in, they are directed to the photo wall.
+  if ($loggedin)
+  {
+    header('Location: wall.php');
+    exit();
+  }
 ?>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,15 +56,15 @@ echo "  <title>$appname</title>\n";
   echo "<h2 class=\"form-signin-heading\">Welcome to $appname</h2>\n";
 
 // Users that are signed in can sign out or go to the wall, otherwise they can sign in or sign up.
-  if ($loggedin)
-  {
-echo <<<_END
-      <h3 class="form-signin-heading">$user is signed in.</p>
-      <a id="appNameBtn" class="btn btn-lg btn-primary btn-block" href="wall.php" role="button">View Wall</a>
-      <a id="signOutBtn" class="btn btn-lg btn-primary btn-block" href="logout.php" role="button">Sign out</a>
-_END;
-  }
-  else
+  if (!$loggedin)
+//   {
+// echo <<<_END
+//       <h3 class="form-signin-heading">$user is signed in.</p>
+//       <a id="appNameBtn" class="btn btn-lg btn-primary btn-block" href="wall.php" role="button">View Wall</a>
+//       <a id="signOutBtn" class="btn btn-lg btn-primary btn-block" href="logout.php" role="button">Sign out</a>
+// _END;
+//   }
+//   else
   {
 echo <<<_END
       <a id="appNameBtn" class="btn btn-lg btn-primary btn-block" href="wall.php" role="button">View Wall</a>
