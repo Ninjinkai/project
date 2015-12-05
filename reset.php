@@ -48,10 +48,6 @@ $error = "No password change has been submitted.";
                 $error = "Your password has been updated.";
             }
         }
-
-    // Prevent duplicate submissions on page refresh.
-        // header("Location: reset.php");
-        // exit();
     }
 ?>
 <!DOCTYPE html>

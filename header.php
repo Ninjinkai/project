@@ -60,6 +60,7 @@ _END;
   else
   {
 echo <<<_END
+      <a id="appNameBtn" class="btn btn-lg btn-primary btn-block" href="wall.php" role="button">View Wall</a>
       <a id="signUpBtn" class="btn btn-lg btn-primary btn-block" href="signup.php" role="button">Sign up</a>
       <a id="signInBtn" class="btn btn-lg btn-primary btn-block" href="signin.php" role="button">Sign in</a>
 _END;

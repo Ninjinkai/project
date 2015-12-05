@@ -14,13 +14,6 @@
     }
     else $loggedin = FALSE;
 
-// If the user is not signed in, they are redirected to the sign in/up form.
-    if(!$loggedin)
-    {
-        header('Location: index.php');
-    exit();
-    }
-
 // Handle form post.
     if(isset($_POST['title']) && isset($_POST['text']))
     {
@@ -81,6 +74,13 @@
 </head>
 <body>
 <?php
+
+// If the user is not signed in, this will be the username.
+if ($user == "")
+{
+    $user = "Not signed in";
+}
+
 echo <<<_END
 <!-- Navigation bar. -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -100,6 +100,7 @@ echo <<<_END
                     </ul>
                 </li>
             </ul>
+        </div>
     </nav>
 _END;
 ?>
