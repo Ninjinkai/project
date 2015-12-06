@@ -62,8 +62,8 @@ echo <<<_END
                 </li>
             </ul>
     </nav>
-
-<div class="container">    
+<!-- Page content. -->
+    <div class="container">    
         <div class="row">
             <div id="formParent" class="col-md-6 col-md-offset-3">
                 <form id="form" class="form-horizontal" method="POST" action="reset.php">

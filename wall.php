@@ -18,7 +18,6 @@
     if(isset($_POST['title']) && isset($_POST['text']))
     {
         // Sanitze inputs.
-        // $name = sanitizeString($db, $_POST['name']);
         $title = sanitizeString($db, $_POST['title']);
         $text = sanitizeString($db, $_POST['text']);
 

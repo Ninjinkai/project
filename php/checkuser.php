@@ -2,6 +2,8 @@
   require_once 'db_connect.php';
   require_once 'functions.php';
 
+// Called when a user enters a character into the sign up form.
+// Checks the database for the input username and informs availability.
   if (isset($_POST['user']))
   {
     $user   = sanitizeString($db, $_POST['user']);

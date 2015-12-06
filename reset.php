@@ -33,15 +33,19 @@ $error = "No password change has been submitted.";
         if ($oldPassword == "" || $newPassword == "") $error = "Not all fields were entered.";
         else 
         {
+            // Salt and hash input, then query database.
             $salt1 = "2Qs0r@";
             $salt2 = "J0n@$";
             $oldtoken = hash('ripemd128', "$salt1$oldPassword$salt2");
             $newtoken = hash('ripemd128', "$salt1$newPassword$salt2");
             $result = queryMysql("SELECT password FROM USERS WHERE userid='$user' AND password='$oldtoken'");
+            
+            // If the passwords don't match, the query returns nothing.
             if ($result->num_rows == 0)
             {
                $error = "Incorrect password.";
-            } 
+            }
+            // The old password matches the current password, so the new password updates the table.
             else
             {
                 queryMysql("UPDATE USERS SET password='$newtoken' WHERE userid='$user'");

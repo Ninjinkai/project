@@ -5,16 +5,21 @@ echo <<<_END
   <script>
     function checkUser(user)
     {
+      // Initialize the output element.
       if (user.value == '')
       {
         $("#info").text('')
         return
       }
+
+      // Set up and execute the Ajax request.
       params  = "user=" + user.value
       request = new ajaxRequest()
       request.open("POST", "php/checkuser.php", true)
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+      // removed bad setRequestHeader methods here
 
+      // Display results of Ajax request.
       request.onreadystatechange = function()
       {
         if (this.readyState == 4)
@@ -72,6 +77,7 @@ _END;
   }
 
 // Remove top sign up button, present sign up form.
+// The Ajax script is called when a character is typed into the username field.
 echo <<<_END
     <script>
       $("#signUpBtn").remove();
